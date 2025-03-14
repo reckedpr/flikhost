@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload - Flikhost</title>
+
+    <link rel="stylesheet" href="css/upload.css">
+
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+
+    <link rel="prefetch" href="assets/purple-mojave.jpg"/>
+</head>
+<body>
+    <div class="centered">
+        <div class="mainBox">
+            <div class="innerContainer">
+                <h2 style="padding-bottom: 20px;">Upload image(s)</h2>
+                <div class="uploadContainer">
+                    <div>
+                        <div class="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragenter="dragEnterHandler(event);" ondragleave="dragLeaveHandler(event);">
+                            <p>Drag one or more files here</p>
+                        </div>
+                        <p style="padding-top: 10px;">Accepted file types (.png, .jpg, .gif)</p>
+                    </div>
+                    <div class="line-with-text">
+                        <span>OR</span>
+                    </div>
+                    <div>
+                        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/gif" multiple style="display: none;">
+                        <button onclick="document.getElementById('fileInput').click();">Choose Images</button>
+                    </div>
+                    <span style="text-align: center; margin-top: auto;"><a href="signup.html">create an account</a> and gain control over your uploads</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--     <div class="bottomLeft">
+        <p>made with ❤ by reckedpr</p>
+    </div> -->
+    <script>
+        console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
+    </script>
+    <script src="js/file.js"></script>
+</body>
+</html>
