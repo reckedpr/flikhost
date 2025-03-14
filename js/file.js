@@ -1,29 +1,44 @@
 
-// ty mozilla for this wonderful function <3
 function dropHandler(ev) {
   console.log("File(s) dropped");
-  
+
   const dropZone = ev.target;
-  // Prevent default behavior (Prevent file from being opened)
+
   ev.preventDefault();
 
   if (ev.dataTransfer.items) {
-    // Use DataTransferItemList interface to access the file(s)
     [...ev.dataTransfer.items].forEach((item, i) => {
-      // If dropped items aren't files, reject them
       if (item.kind === "file") {
         const file = item.getAsFile();
         console.log(`… file[${i}].name = ${file.name}`);
+
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            updateImage(e.target.result);
+          };
+
+          reader.readAsDataURL(file);
+        }
       }
     });
   } else {
-    // Use DataTransfer interface to access the file(s)
     [...ev.dataTransfer.files].forEach((file, i) => {
       console.log(`… file[${i}].name = ${file.name}`);
+
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          updateImage(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
     });
   }
+
   dropZone.classList.remove("hover");
 }
+
 
 
 function dragOverHandler(ev) {
@@ -45,12 +60,14 @@ function dragLeaveHandler(ev) {
   dropZone.classList.remove("hover");
 }
 
-function validateFile(file_item) {
-  var types = /(\.jpg|\.jpeg|\.gif|\.png)$/i; // stoled
-  if (!re.exec(fname)) {
-    //not supported
-
-  } else {
-    // do somethin dawg
+function fileSelectHandler(ev) {
+  const file = ev.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          const imageUrl = e.target.result;
+          updateImage(imageUrl);
+      };
+      reader.readAsDataURL(file);
   }
 }

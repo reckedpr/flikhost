@@ -6,10 +6,12 @@ document.getElementById("togglePassword").addEventListener("click", function () 
 
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
+        
         eyeOpen.style.opacity = "0";
         eyeClosed.style.opacity = "1";
     } else {
         passwordInput.type = "password";
+
         eyeOpen.style.opacity = "1";
         eyeClosed.style.opacity = "0";
     }

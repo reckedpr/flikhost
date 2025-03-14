@@ -15,32 +15,45 @@
     <div class="centered">
         <div class="mainBox">
             <div class="innerContainer">
-                <h2 style="padding-bottom: 20px;">Upload image(s)</h2>
+                <h2 style="padding-bottom: 20px;">Upload image</h2>
                 <div class="uploadContainer">
-                    <div>
-                        <div class="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragenter="dragEnterHandler(event);" ondragleave="dragLeaveHandler(event);">
-                            <p>Drag one or more files here</p>
+                    <div class="dropzoneContainer">
+                        <div id="dropzone" class="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragenter="dragEnterHandler(event);" ondragleave="dragLeaveHandler(event);">
+                            <p id="dropzoneHide">Drag an image file here</p>
                         </div>
-                        <p style="padding-top: 10px;">Accepted file types (.png, .jpg, .gif)</p>
+                        <p id="filetypeHide" style="padding-top: 10px;">Accepted file types (.png, .jpg, .gif)</p>
                     </div>
-                    <div class="line-with-text">
+                    <div id="lineHide" class="line-with-text">
                         <span>OR</span>
                     </div>
-                    <div>
-                        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/gif" multiple style="display: none;">
+                    <div id="inputHide">
+                        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/gif" style="display: none;" onchange="fileSelectHandler(event)">
                         <button onclick="document.getElementById('fileInput').click();">Choose Images</button>
                     </div>
-                    <span style="text-align: center; margin-top: auto;"><a href="signup.html">create an account</a> and gain control over your uploads</span>
                 </div>
+                <span style="text-align: center; margin-top: auto;"><a href="signup.html">create an account</a> and gain control over your uploads</span>
             </div>
         </div>
+        <!-- <button style="width: 30%; margin-top: 20px; background-color: grey; box-shadow: none;" onclick="updateImage()">update</button> -->
     </div>
 <!--     <div class="bottomLeft">
         <p>made with ❤ by reckedpr</p>
     </div> -->
     <script>
         console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
+
+        document.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("drop", function(event) {
+            if (!event.target.closest(".drop_zone")) {
+                event.preventDefault();
+            }
+        });
     </script>
+
     <script src="js/file.js"></script>
+    <script src="js/update.js"></script>
 </body>
 </html>
