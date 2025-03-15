@@ -3,24 +3,25 @@
 
 An image hosting website concept made with JS, PHP and mysql (mariaDB)
 
-## Features
+## ⭐ Features
 - anonymous uploads
 - expiring posts
 - account system
 
-## Roadmap
-- [ ] frontend
-  - [X] sign up page
-  - [X] log in page
-  - [X] upload page
-  - [ ] image handling
-  - [ ] post controls
-
-- [ ] backend
-  - [ ] image databasing
-  - [ ] log in handling
-  - [X] sign up handling
-
-- [ ] hosting
-  - [ ] server/vps
-  - [ ] domain
+## ⏳ Progress
+- [ ] Front-end
+  - [ ] Pages
+    - [X] Sign up
+    - [X] Log in
+    - [X] Upload
+  - [ ] Post controls
+- [ ] Back-end
+  - [ ] PHP api
+    - [ ] Upload requests
+    - [ ] Deletion requests
+  - [ ] User Authentication
+    - [ ] Log in
+    - [X] Sign up
+- [ ] Hosting
+  - [ ] Server/VPS
+  - [ ] Domain
