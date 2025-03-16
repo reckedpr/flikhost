@@ -18,7 +18,7 @@ function guidv4($data = null) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once 'dbh.inc.php'; // Database connection
+    require_once 'dbuser.inc.php'; // Database connection
 
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);

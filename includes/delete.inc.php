@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     try {
-        require_once 'dbh.inc.php'; // Database connection
+        require_once 'dbuser.inc.php'; // Database connection
 
         $query = "DELETE FROM users WHERE id = ?";
         $stmt = $pdo->prepare($query);
