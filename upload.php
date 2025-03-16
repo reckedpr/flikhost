@@ -53,7 +53,7 @@
         
     </div>
 <!--     <div class="bottomLeft">
-        <p>made with ❤ by reckedpr</p>
+        <p>made with ❤ by reckedpr <-- bro thinks he made this himself</p>
     </div> -->
     <script>
         console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
@@ -73,3 +73,10 @@
     <script src="js/update.js"></script>
 </body>
 </html>
+<?php
+session_start();
+
+
+
+
+?>

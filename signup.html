@@ -30,15 +30,15 @@
                     <div class="formContainer">
                         <div style="padding-bottom: 58px; padding-top: 20px;">
                             <h1 style="padding-bottom: 15px;">Create an account</h1>
-                            <span style="display: flex;"><p>Already have an account? &nbsp;</p><a href="login.html">Log in</a></span>
+                            <span style="display: flex;"><p>Already have an account? &nbsp;</p><a href="login.php">Log in</a></span>
                             
                         </div>
                         <div class="formInputs">
                             <div style="display: flex; flex-direction: row; gap: 20px;">
-                                <input class="input" type="text" placeholder="First Name">
-                                <input class="input" type="text" placeholder="Last Name">
+                                <input class="input" id="forename" type="text" placeholder="First Name">
+                                <input class="input" id="surname" type="text" placeholder="Last Name">
                             </div>
-                            <input class="input" type="text" placeholder="Email">
+                            <input id="email" class="input" type="text" placeholder="Email">
                             <div class="password-container">
                                 <input class="password-input" type="password" id="password" placeholder="Enter a password">
                                 <div class="eye-icon" id="togglePassword">
@@ -61,10 +61,11 @@
                                     <input class="custom-checkbox" type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
-                                <p class="text">I agree to the&nbsp;</p><a href="google.com">Terms & Conditions</a>
+                                <p class="text">I agree to the&nbsp;</p><a href="tos.html">Terms & Conditions</a>
                             </div>
                             <div class="create-button">
-                                <button>Create account</button>
+                                <button id="signup">Create account</button> <!-- bruh why its not form, much weirder to work with in php -->
+                                <!-- Bruh it actually is so weird I've had to switch over to fetch and its more confusing than just form action -->
                             </div>
                         </div>
                     </div>
@@ -76,5 +77,6 @@
         console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
     </script>
     <script src="js/password.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 </html>

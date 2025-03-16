@@ -35,7 +35,7 @@
                         </div>
                         <div class="formInputs">
 
-                            <input class="input" type="text" placeholder="Email">
+                            <input class="input" id="email" type="text" placeholder="Email">
                             <div class="password-container">
                                 <input class="password-input" type="password" id="password" placeholder="Enter your password">
                                 <div class="eye-icon" id="togglePassword">
@@ -57,7 +57,7 @@
 
 
                             <div style="padding-top: 50px;" class="create-button">
-                                <button>Sign in</button>
+                                <button id="login">Sign in</button>
                             </div>
                         </div>
                     </div>
@@ -72,3 +72,11 @@
     <script src="js/password.js"></script>
 </body>
 </html>
+<script src="js/login.js"></script>
+<script>
+    document.getElementById("email").value = "<?php
+        if(isset($_GET["email"])){
+            echo $_GET["email"];
+        }
+        ?>"; //Kind of a stinky way to do this but it works
+</script>
