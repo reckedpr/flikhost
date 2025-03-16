@@ -21,7 +21,7 @@
                             <h1>flikhost</h1>
                             <p>Moments fade, images last</p>
                         </div>
-                        <div class="backButton" onclick="location.href='upload.html';">
+                        <div class="backButton" onclick="location.href='upload.php';">
                             <button>return to site</button>
                         </div>
                     </div>

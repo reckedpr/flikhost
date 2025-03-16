@@ -7,16 +7,16 @@
 
 - Handle images
     - Add images to file system (Bailey) - DONE
-    - Storage image location in database for access (Bailey)
+    - Storage image location in database for access (Bailey) DONE
 
 - View images
     - Create a automated webpage to view the images
-        - Formatting using css and optional html elements (Dexter)
-        - Create automatic webpage system or just use the image, IE: https://example.com/test.png (Bailey)
+        - Formatting using css and optional html elements (Dexter) 
+        - Create automatic webpage system or just use the image, IE: https://example.com/test.png (Bailey) DONE
 
 - Attach a username to the uploaded images
     - HTML, CSS formatting (Dexter)
-    - Attach usernames from database to webpage (Bailey)
+    - Attach usernames from database to webpage (Bailey) DONE
 
 - Optional anon upload
     - Add checkbox (or something) to allow for anon uploads (Dexter)
@@ -29,6 +29,6 @@
 - "My images" webpage
     - Create images html page to display images and options to click on the image and button to delete them (Dexter)
     - Delete images - Possibily hard for Bailey
-        - Handle image deletion (Bailey)
-        - Remove from file system (Bailey)
-        - Remove pointer from database (Bailey)
+        - Handle image deletion (Bailey) DONE
+        - Remove from file system (Bailey) DONE
+        - Remove pointer from database (Bailey) DONE
