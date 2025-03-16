@@ -1,1 +1,34 @@
-- Hi dexter pls add notifcation for user on singup and login page when invalid data is entered 
+- Add notifcation for user on sign up and login page when invalid data is entered
+    - On login.php add an area for notifcations sent from the server (Dexter)
+    - On signup.html add an area for notifcations sent from the server (Dexter) - Possibly don't need for signup.html, only login.php
+
+- Secure session ID - DONE
+    - Add a session ID to the logged in user so that they can't be impersonated (Bailey) - DONE
+
+- Handle images
+    - Add images to file system (Bailey) - DONE
+    - Storage image location in database for access (Bailey)
+
+- View images
+    - Create a automated webpage to view the images
+        - Formatting using css and optional html elements (Dexter)
+        - Create automatic webpage system or just use the image, IE: https://example.com/test.png (Bailey)
+
+- Attach a username to the uploaded images
+    - HTML, CSS formatting (Dexter)
+    - Attach usernames from database to webpage (Bailey)
+
+- Optional anon upload
+    - Add checkbox (or something) to allow for anon uploads (Dexter)
+    - Handle the anon uploads (Bailey)
+
+- Add expire options
+    - Add dropdown (or something) to add an expire time (Dexter)
+    - Add additional table to accept expire time (Bailey)
+
+- "My images" webpage
+    - Create images html page to display images and options to click on the image and button to delete them (Dexter)
+    - Delete images - Possibily hard for Bailey
+        - Handle image deletion (Bailey)
+        - Remove from file system (Bailey)
+        - Remove pointer from database (Bailey)

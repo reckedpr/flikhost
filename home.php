@@ -22,14 +22,21 @@
 session_start(); //If they are logged in then all the asscoiated session variables are set
 
     if(isset($_GET["login"])){
-        if($_GET["login"] == "true"){
-            echo "<p>You are logged in!</p>";
+        if($_GET["login"] == "true" ){
+            echo "<p>You have logged in!</p>";
             echo "<p>Your username is: ", $_SESSION['user_name'] , "</p>";
             echo "<p>Your id is: ", $_SESSION['user_id'] , "</p>"; 
             echo "<br><br><button onclick='signout()'>sign out</button>";
         }
-    }
-    if(isset($_GET["signout"])){
+    }elseif(isset($_SESSION['user_id']) ){
+        echo "<p>You are logged in!</p>";
+        echo "<p>Your username is: ", $_SESSION['user_name'] , "</p>";
+        echo "<p>Your id is: ", $_SESSION['user_id'] , "</p>"; 
+        echo "<br><br><button onclick='signout()'>sign out</button>";
+    }elseif(!isset($_GET["signout"])){
+        echo "<p>You are not logged in!</p>";
+        echo "<br><br><button onclick='signup()'>sign in</button>";
+    }elseif(isset($_GET["signout"])){
         if($_GET["signout"] == "true"){
             echo "<p>You have signed out!</p>";
             echo "<br><br><button onclick='signup()'>sign in</button>";

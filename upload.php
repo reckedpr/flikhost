@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +40,7 @@
                     </div>
                 </div>
                 <span style="text-align: center; margin-top: auto;"><a href="signup.html">create an account</a> and gain control over your uploads</span>
+                <span style="text-align: center; margin-top: auto;" id="tempupload"><button onclick="handleImage()">Upload</button></span>
             </div>
         </div>
 <!--         <div class="configContainer">
@@ -56,6 +64,38 @@
         <p>made with ❤ by reckedpr <-- bro thinks he made this himself</p>
     </div> -->
     <script>
+
+const generateUUID = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(16)
+  );
+
+function handleImage() {
+  const element = document.getElementById("dropzone"); // Target the element
+  const style = window.getComputedStyle(element); // Get computed styles
+  const bgImage = style.backgroundImage; // Get background image property
+  
+  // Extract the URL from background-image: url("your-image.png")
+  const imageUrl = bgImage.replace(/url\(["']?(.*?)["']?\)/, '$1');
+  
+  console.log(imageUrl); // Outputs: your-image.png (or full path)
+  
+
+  fetch("includes/uploadImage.inc.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        image: imageUrl, // Replace with real base64 data
+        imagename: generateUUID()
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
+
         console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
 
         document.addEventListener("dragover", function(event) {
@@ -73,10 +113,3 @@
     <script src="js/update.js"></script>
 </body>
 </html>
-<?php
-session_start();
-
-
-
-
-?>
