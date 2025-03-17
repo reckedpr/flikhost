@@ -12,11 +12,11 @@
 - View images
     - Create a automated webpage to view the images
         - Formatting using css and optional html elements (Dexter) 
-        - Create automatic webpage system or just use the image, IE: https://example.com/test.png (Bailey) DONE
+        - Create automatic webpage system or just use the image, IE: https://example.com/test.png (Bailey) DONE (kinda)
 
 - Attach a username to the uploaded images
     - HTML, CSS formatting (Dexter)
-    - Attach usernames from database to webpage (Bailey) DONE
+    - Attach usernames from database to webpage (Bailey)
 
 - Optional anon upload
     - Add checkbox (or something) to allow for anon uploads (Dexter)
@@ -28,7 +28,8 @@
 
 - "My images" webpage
     - Create images html page to display images and options to click on the image and button to delete them (Dexter)
-    - Delete images - Possibily hard for Bailey
+    - Delete images - Possibily hard for Bailey (it was)
         - Handle image deletion (Bailey) DONE
         - Remove from file system (Bailey) DONE
         - Remove pointer from database (Bailey) DONE
+    - Display the images and related data on the webpage (Bailey) DONE

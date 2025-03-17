@@ -70,7 +70,7 @@ session_start();
 if(<?php echo json_encode(!isset($_SESSION['user_session_id'])); ?>) {
     console.log("User not logged in");
     // If we want to redirect the user to the login page then uncomment the line below
-    // Header("Location: login.php");
+    // Header("Location: login");
 } else {
     console.log("User logged in");
     document.addEventListener("DOMContentLoaded", function() {

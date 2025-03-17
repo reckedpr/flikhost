@@ -14,7 +14,7 @@
     }
 
     function signup(){
-        window.location.href = "login.php";
+        window.location.href = "login";
     }
 </script>
 </html>

@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../home.php?signout=true");
+header("Location: ../home?signout=true");
 exit();
 ?>

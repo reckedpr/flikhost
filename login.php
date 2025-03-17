@@ -21,7 +21,7 @@
                             <h1>flikhost</h1>
                             <p>Moments fade, images last</p>
                         </div>
-                        <div class="backButton" onclick="location.href='upload.php';">
+                        <div class="backButton" onclick="location.href='upload';">
                             <button>return to site</button>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="formContainer">
                         <div style="padding-bottom: 58px; padding-top: 20px;">
                             <h1 style="padding-bottom: 15px;">Sign in</h1>
-                            <span style="display: flex;"><p>Not registered? &nbsp;</p><a href="signup.html">create an account</a></span>
+                            <span style="display: flex;"><p>Not registered? &nbsp;</p><a href="signup">create an account</a></span>
                             
                         </div>
                         <div class="formInputs">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <a href="signup.html">Forgotten password?</a>
+                            <a href="signup">Forgotten password?</a>
 
 
                             <div style="padding-top: 50px;" class="create-button">
