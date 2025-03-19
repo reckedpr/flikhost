@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         try {
-            require_once 'dbuser.inc.php'; // Database connection
+            require_once 'dbh.inc.php'; // Database connection
             $query = "DELETE FROM users WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([(int)$data["id"]]);
@@ -36,10 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         try {
-            require_once 'dbimages.inc.php'; // Database connection
+            require_once '../db/dbh.inc.php'; // Database connection
+
+            if(isset($_POST["allimage"])){
+                if($_POST["allimage"] == true){
+
+                    $query = "SELECT image_path FROM images";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute();
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    //Will create later more, pressing matters rn.
+
+                }
+            }
 
             // Fetch image path
-            $query = "SELECT image_path FROM images WHERE image_id = ?";
+            $query = "SELECT image_path FROM images WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$data["image_id"]]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -57,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // Delete record from database
-            $query = "DELETE FROM images WHERE image_id = ?";
+            $query = "DELETE FROM images WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$data["image_id"]]);
 
@@ -69,3 +82,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+// pelican type beeeeeeeeeeeeat

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     try {
-        require_once 'dbuser.inc.php'; // Database connection
+        require_once '../db/dbh.inc.php'; // Database connection
 
         $query = "INSERT INTO users (fname, sname, email, pwd) VALUES (?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);

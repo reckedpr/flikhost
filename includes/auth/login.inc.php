@@ -18,7 +18,7 @@ function guidv4($data = null) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once 'dbuser.inc.php'; // Database connection
+    require_once '../db/dbh.inc.php'; // Database connection
 
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Check if email exists
-        $query = "SELECT id, fname, sname, pwd FROM users WHERE email = ?";
+        $query = "SELECT id, session_id, session_id_created_at, fname, sname, pwd FROM users WHERE email = ?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Authentication successful
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['fname'] . $user['sname'][0];
-            $_SESSION["user_session_id"] = guidv4();
+
+            if($user["session_id"] != null && (time() - strtotime($user["session_id_created_at"]) < 2629743)){ //Ensures that the session exists and hasnt existed for longer than a month
+                $_SESSION["user_session_id"] = $user["session_id"];
+            }else{//Assign new session cookie after a month
+                $session_id = guidv4();
+                $query = "UPDATE users SET session_id = ?, session_id_created_at = NOW() WHERE id = ?";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute([$session_id, $user["id"]]);
+                $_SESSION["user_session_id"] = $session_id;
+            }
+
+
 
             echo json_encode(["success" => true, "message" => "Login successful!"]);
         } else {

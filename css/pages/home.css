@@ -1,37 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 html {
+    height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    height: 100%;
-
-}
-
-body {
-    background-color: #686279;
 
     font-family: inter;
     color: #aaaaab;
 }
 
-h1, h2, h3, p { margin: 0; }
+body {
+    background-color: #686279;
+}
 
-h1 {
+h2 {
     font-family: inter;
-    font-size: 52px;
+    font-size: 42px;
     font-weight: 500;
 
     color: #FFFFFF;
 }
 
-a {
-    color: #baa3f5;
-    text-decoration: underline;
+h1 {
+    font-family: inter;
+    font-size: 56px;
+    font-weight: 500;
+
+    color: #FFFFFF;
 }
 
-
+h1, h2, h3, p {
+    margin: 0;
+}
 
 input {
     height: 56px;
@@ -44,14 +46,12 @@ input {
     color: #FFFFFF;
 
     outline: none;
-    border: 1px #ffffff00 solid;
+    border: 1.5px #ffffff00 solid;
     
     border-radius: 8px;
 
     padding-left: 15px;
     box-sizing: border-box;
-
-    transition: border ease 0.2s;
 }
 
 input:focus-within {
@@ -78,7 +78,6 @@ button {
 
     border-radius: 8px;
 
-    padding-left: 15px;
     box-sizing: border-box;
 
     cursor: pointer;
@@ -90,12 +89,26 @@ button:hover {
     box-shadow: 0px 0px 20px -3px #6d54b5;
 }
 
+a {
+    color: #baa3f5;
+    text-decoration: underline;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
 .mainBox {
     /* border: 1px cyan solid; */
 
-    width: 1300px;
-    height: 800px;
-    padding: 15px;
+    width: 800px;
+    height: 600px;
+    padding: 50px;
+    padding-bottom: 25px;
+
 
     border-radius: 20px;
 
@@ -104,75 +117,15 @@ button:hover {
     box-shadow: 0px 0px 100px -5px #332c41;
 }
 
-.innerContainer {
+.header {
     display: flex;
+    align-items: center;
     flex-direction: row;
-
-    gap: 20px;
-
-    width: 100%;
-    height: 100%;
 }
 
-.leftBox {
-    /* border: 1px rgb(0, 255, 13) solid; */
+.accountAction { margin-left: auto; }
 
-    width: 100%;
-    height: 100%;
-
-    border-radius: 10px;
-
-    background-color: #5a5398;
-
-    background-image: url('../assets/purple-mojave.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    mask-image: content-box;
-}
-
-.innerLeft {
-    display: flex;
-    align-items: end;
-    flex-direction: row;
-
-    padding: 15px;
-
-    height: inherit;
-
-    box-sizing: border-box;
-}
-
-.rightBox {
-    /* border: 1px rgb(234, 0, 255) solid; */
-
-    width: 100%;
-    height: 100%;
-
-    display: grid;
-    grid-template-rows: 1fr auto;
-}
-
-.formContainer {
-    width: 100%;
-    height: 100%;
-
-    padding: 50px;
-    box-sizing: border-box; 
-}
-
-.formInputs {
-    display: flex;
-    flex-direction: column;
-
-    gap: 20px;
-}
-
-
-.backButton { margin-left: auto; }
-
-.backButton button {
+.accountAction button {
     width: 200px;
     height: 44px;
 
@@ -180,11 +133,20 @@ button:hover {
 
     color: #ffffff;
 
+    border: 2px solid #ffffff00;
 
     background: rgba(255, 255, 255, 0.124);
     backdrop-filter: saturate(100%) blur(2px);
+
+    transition: border, ease, 0.3s;
 }
 
-.backButton button:hover {
+.accountAction button:hover {
     box-shadow: 0px 0px 25px -3px #312a3e;
+    border: 2px solid #dd3f3f;
+}
+
+.accountActionGuest:hover {
+    box-shadow: 0px 0px 25px -3px #312a3e;
+    border: 2px solid #3fdd57 !important;
 }

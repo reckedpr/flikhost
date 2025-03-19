@@ -1,17 +1,13 @@
-document.getElementById("signup").addEventListener("click", function() {
-    let forename = document.getElementById("forename").value;
-    let surname = document.getElementById("surname").value;
+document.getElementById("login").addEventListener("click", function() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
     let postData = {
-        forename: forename,
-        surname: surname,
         email: email,
         password: password
     };
 
-    fetch("includes/signup.inc.php", { // Uhh yea
+    fetch("/includes/auth/login.inc.php", { // Uhh yea
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData)
@@ -23,7 +19,7 @@ document.getElementById("signup").addEventListener("click", function() {
     })
     .then(data => {
         if (data.success) {
-            window.location.href = `login.php?email=${data.email}`; // Redirect on success
+            window.location.href = `home?login=true`; // Redirect on success
         } else {
             console.error("Error:", data.message); //Temp error message display
             document.getElementById("responseMessage").innerText = data.message; //TODO: Display the error message on the webpage... Dexter UwU

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found</title>
+</head>
+<body>
+    <script>
+        function getRandomNumber() {
+    return Math.random() * (1.2 - 0.5) + 0.5;
+}
+    </script>
+    <script src="/assets/silly/taptapir/taptapir.js"></script>
+<script type="text/sunsnake">
+#Literally python without syntax highlighting, gotta love taptap
+
+set_orientation('landscape')
+set_background_color('#fff')
+set_window_color('#fff')
+
+set_scale(1.0)
+
+_404Text = Text(text='Sorry this page was not found, error code 404, in the mean time, why not play a game?',text_size=1,x=-.48)
+gameTitle = Text(text="Dexter's marvellous adventure!", y=-.05,x=0.05)
+score = Text(text="Score: 0",x=.29,y=-.16)
+
+floor = Entity(color=color.blue,scale=[100,.025],y=-.5)
+dexter = Entity(texture = "/assets/silly/taptapir/person1.png",scale=[.04,.1],x=-.55,isfalling=true,isjumping=false,canjump=true)
+
+gameRunning = false
+
+obstacles = []
+
+totalScore = 0
+
+gravity = -0.00005
+jump_force = 0.01
+
+velocity_y = 0.0  
+
+def jump():
+    if dexter.isjumping:
+        dexter.canjump = false
+        velocity_y = jump_force
+        after .2:
+            dexter.isjumping = false
+            dexter.canjump = true
+
+def spawn_tree():
+    tree = Entity(texture="/assets/silly/taptapir/cactus.png",scale=[.05,.06],y=-.46,x=.9)
+    obstacles.append(tree)
+    after getRandomNumber():
+        if gameRunning:
+            spawn_tree()
+            civilPhase = 0
+
+def youDied():
+    tmpText = Text(text="You died!",x=.28,y=-.3)
+    tmpRespawn = Button(text="Try again",scale=[.25,.1], color=color.black,text_color=color.white)
+    tmpRespawn.on_click = def():
+        print(obstacles)
+        for e, i in obstacles:
+            destroy(i)
+            obstacles.pop(e-1)
+        dexter.y = 0
+        destroy(tmpText)
+        destroy(tmpRespawn)
+        
+        after 1.2:
+            gameRunning = true
+            changePerson1()
+            totalScore = 0
+            addScore()
+            spawn_tree()
+
+def addScore():
+    if gameRunning:
+        totalScore += 1
+        after .1:
+            addScore()
+
+def changePerson1():
+    dexter.texture = "/assets/silly/taptapir/person2.png"
+    after .2:
+        changePerson()
+
+def changePerson():
+    dexter.texture = "/assets/silly/taptapir/person1.png"
+    after .2:
+        changePerson1()
+
+def update():
+    if gameRunning:
+        score.text = `Score ${totalScore}`
+        for e, i in obstacles:
+            if i.x > .91:
+                destroy(i)
+                obstacles.pop(e-1)
+            i.x -= .003
+
+        if dexter.y > -0.435 and not dexter.isjumping:
+            velocity_y += gravity
+            dexter.y += velocity_y
+            
+            if dexter.y < -0.435:
+                dexter.y = -0.435
+                velocity_y = 0 
+                dexter.isfalling = false
+        else:
+            dexter.isfalling = false
+        
+        if dexter.isjumping:
+            velocity_y += gravity * 7
+            dexter.y += velocity_y 
+            if velocity_y < 0:
+                dexter.isfalling = true
+
+        for e in obstacles:
+            if dexter.x >= e.x - 0.03 and dexter.x <= e.x + 0.03 and dexter.y >= e.y - 0.05 and dexter.y <= e.y + 0.05:
+                gameRunning = false
+                youDied()
+
+
+def input(key):
+    if gameRunning:
+        if key == "space" and not dexter.isfalling and dexter.canjump:
+            dexter.isjumping = true
+            dexter.canjump = false
+            jump()
+
+startGame = Button(text="Start game",scale=[.3,.1],y=.15,color=color.black,text_color=color.white)
+startGame.on_click = def():
+    destroy(startGame)
+    gameRunning = true
+    spawn_tree()
+    changePerson1()
+    addScore()
+
+</script>
+    <script src="/assets/silly/taptapir/sunsnake_compiler.js"></script></html>
+</body>
+</html>

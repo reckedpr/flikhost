@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Flikhost</title>
+    <title>Sign Up - Flikhost</title>
 
-    <link rel="stylesheet" href="css/account.css">
-    <link rel="stylesheet" href="css/password.css">
-    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="/css/pages/account.css">
+    <link rel="stylesheet" href="/css/shared/password.css">
+    <link rel="stylesheet" href="/css/shared/checkbox.css">
 
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="centered">
@@ -29,15 +29,18 @@
                 <div class="rightBox">
                     <div class="formContainer">
                         <div style="padding-bottom: 58px; padding-top: 20px;">
-                            <h1 style="padding-bottom: 15px;">Sign in</h1>
-                            <span style="display: flex;"><p>Not registered? &nbsp;</p><a href="signup">create an account</a></span>
+                            <h1 style="padding-bottom: 15px;">Create an account</h1>
+                            <span style="display: flex;"><p>Already have an account? &nbsp;</p><a href="login">Log in</a></span>
                             
                         </div>
                         <div class="formInputs">
-
-                            <input class="input" id="email" type="text" placeholder="Email">
+                            <div style="display: flex; flex-direction: row; gap: 20px;">
+                                <input class="input" id="forename" type="text" placeholder="First Name">
+                                <input class="input" id="surname" type="text" placeholder="Last Name">
+                            </div>
+                            <input id="email" class="input" type="text" placeholder="Email">
                             <div class="password-container">
-                                <input class="password-input" type="password" id="password" placeholder="Enter your password">
+                                <input class="password-input" type="password" id="password" placeholder="Enter a password">
                                 <div class="eye-icon" id="togglePassword">
                                     <svg class="eye-open" id="eye-open" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9944 15.5C13.9274 15.5 15.4944 13.933 15.4944 12C15.4944 10.067 13.9274 8.5 11.9944 8.5C10.0614 8.5 8.49439 10.067 8.49439 12C8.49439 13.933 10.0614 15.5 11.9944 15.5ZM11.9944 13.4944C11.1691 13.4944 10.5 12.8253 10.5 12C10.5 11.1747 11.1691 10.5056 11.9944 10.5056C12.8197 10.5056 13.4888 11.1747 13.4888 12C13.4888 12.8253 12.8197 13.4944 11.9944 13.4944Z" fill="#686279"/>
@@ -53,11 +56,16 @@
                                 </div>
                             </div>
 
-                            <a href="signup">Forgotten password?</a>
-
-
-                            <div style="padding-top: 50px;" class="create-button">
-                                <button id="login">Sign in</button>
+                            <div class="toc-container">
+                                <label class="checkbox-container">
+                                    <input class="custom-checkbox" type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <p class="text">I agree to the&nbsp;</p><a href="tos">Terms & Conditions</a>
+                            </div>
+                            <div class="create-button">
+                                <button id="signup">Create account</button> <!-- bruh why its not form, much weirder to work with in php -->
+                                <!-- Bruh it actually is so weird I've had to switch over to fetch and its more confusing than just form action -->
                             </div>
                         </div>
                     </div>
@@ -68,15 +76,7 @@
     <script>
         console.log("%c" + "dafuq u here 4?", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
     </script>
-
-    <script src="js/password.js"></script>
+    <script src="/js/utils/password.js"></script>
+    <script src="/js/auth/signup.js"></script>
 </body>
 </html>
-<script src="js/login.js"></script>
-<script>
-    document.getElementById("email").value = "<?php
-        if(isset($_GET["email"])){
-            echo $_GET["email"];
-        }
-        ?>"; //Kind of a stinky way to do this but it works
-</script>

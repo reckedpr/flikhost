@@ -1,10 +1,28 @@
 RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} -f
+#Serve existing files and directories normally
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-RewriteCond %{REQUEST_FILENAME}.php -f
+#Remove .php extension if the file exists
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
 RewriteRule ^([^\.]+)$ $1.php [L]
 
-RewriteCond %{REQUEST_FILENAME}.html -f
+#Remove .html extension if the file exists
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^([^\.]+)$ $1.html [L]
+
+#Route all other requests to the pages/ directory
+RewriteCond %{DOCUMENT_ROOT}/pages/$1.php -f
+RewriteRule ^(.*)$ pages/$1.php [L]
+
+RewriteCond %{DOCUMENT_ROOT}/pages/$1.html -f
+RewriteRule ^(.*)$ pages/$1.html [L]
+
+#Becuz of /pages
+DirectoryIndex pages/index.php
+
+#No more skbidi lack of perms
+ErrorDocument 403 /pages/404.html
+ErrorDocument 404 /pages/404.html
